@@ -1,25 +1,22 @@
 import React from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import Contador from "./contador";
+import { useState } from "react";
 
 //create your first component
-const Home = () => {
+const Home = (props) => {
+
+	//const [counterState, setCounterState] = useState(0);
+	let counterState = props.seconds;
+	setInterval( () => {
+		counterState++
+		console.log(counterState);
+	}, 1000);
+
 	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
+		<>
+			<Contador counterState={counterState} />
+		</>
 	);
 };
 
