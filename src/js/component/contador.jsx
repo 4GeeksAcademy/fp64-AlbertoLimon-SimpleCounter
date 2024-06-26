@@ -1,17 +1,22 @@
 import React from "react";
+import '../../styles/contador.css';
+import { FaRegClock } from "react-icons/fa";
 
-const Contador = ({counterState}) => {
+const Contador = ({props}) => {
 
-	return (
-		<div className="container-fluid bg-dark contenedor d-flex flex-row justify-content-around px-4 py-4">
-			<div className="border border-white bg-secondary">
-			<h1 className="text-white">Contador:</h1>
-			</div>
-			<div className="border border-white bg-secondary">
-				<h1 className="text-white">{counterState}</h1>
-			</div>
-		</div>
-	);
+	console.log(props)
+    return (
+        <>
+            <div className="d-flex flex-column justify-content-center align-items-center">
+                <h1>Simple counter</h1>
+                <div className="contador">
+                    <FaRegClock />
+                    {props}
+                </div>
+            </div>
+        </>
+    )
+
 };
 
 export default Contador;

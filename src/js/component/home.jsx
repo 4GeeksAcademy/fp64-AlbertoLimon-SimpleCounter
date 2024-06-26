@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Contador from "./contador";
 import { useState } from "react";
@@ -6,16 +6,17 @@ import { useState } from "react";
 //create your first component
 const Home = (props) => {
 
-	//const [counterState, setCounterState] = useState(0);
-	let counterState = props.seconds;
-	setInterval( () => {
-		counterState++
-		console.log(counterState);
-	}, 1000);
+	const [counterState, setCounterState] = useState(0);
+	useEffect( () => {
+		const interval = setInterval( () => {
+			setCounterState(prevCounter => prevCounter + 1)
+		}, 1000)
+		return () => clearInterval(interval)
+	}, [])
 
 	return (
 		<>
-			<Contador counterState={counterState} />
+			<Contador props={counterState} />
 		</>
 	);
 };
